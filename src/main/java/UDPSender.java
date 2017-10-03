@@ -6,12 +6,12 @@ public class UDPSender implements Runnable {
     @Override
     public void run() {
         //use localhost to experiment on a standalone computer, change to correct ip address in order to communicate
-        String hostname="localhost", message = "HELLO USING UDP!";
+        String hostname="localhost", message = "This is the default message!";
         try {
             // Create a datagram socket, look for the first available port
             System.out.println ("Using local port: " + UdpExampleMain.socket.getLocalPort());
-            ByteArrayOutputStream bOut = new ByteArrayOutputStream();
-            PrintStream pOut = new PrintStream(bOut, true);
+            ByteArrayOutputStream bOut;
+            PrintStream pOut;
             DatagramPacket packet;
             byte [] bArray;
             System.out.println("Looking for hostname " + hostname);
@@ -23,6 +23,9 @@ public class UDPSender implements Runnable {
             while (UdpExampleMain.stopThreads == false) {
                 //TODO: change so that message can be changed and update sending packet
                 if (UdpExampleMain.sendMessage == true) {
+                    message = UdpExampleMain.message;
+                    bOut = new ByteArrayOutputStream();
+                    pOut = new PrintStream(bOut, true);
                     pOut.println(message);
                     bArray = bOut.toByteArray();
                     packet = new DatagramPacket( bArray, bArray.length );
@@ -33,6 +36,7 @@ public class UDPSender implements Runnable {
                     UdpExampleMain.sendMessage = false;
                 }
             }
+            System.out.println("Stopping sender.");
         }
         catch (UnknownHostException ue){
             System.out.println("Unknown host "+hostname);

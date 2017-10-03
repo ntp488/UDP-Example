@@ -28,10 +28,9 @@ public class UDPReceiver implements Runnable{
                         System.out.print ( (char) data) ;
                 }
             }
-            System.out.println("Stopping receiver.");
         }
         catch (IOException e) 	{
-            System.out.println ("Error - " + e);
+            System.out.println ("Error - Receiver -" + e);
         }
     }
 }

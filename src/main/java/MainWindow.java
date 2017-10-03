@@ -8,8 +8,10 @@ import java.net.DatagramSocket;
  */
 public class MainWindow extends JFrame {
     JButton startThreadsButton, stopThreadsButton, sendMessageButton;
+    JTextArea textArea;
     Thread receiverThread, senderThread;
     public MainWindow() {
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setMinimumSize(new Dimension(300, 500));
         this.setName("UDP-Example");
         this.setTitle("UDP-Example");
@@ -56,6 +58,13 @@ public class MainWindow extends JFrame {
         });
         this.add(stopThreadsButton);
 
+        textArea = new JTextArea();
+        textArea.setAlignmentX(Component.CENTER_ALIGNMENT);
+        textArea.setLineWrap(true);
+        JScrollPane textPane = new JScrollPane(textArea);
+        textPane.setMaximumSize(new Dimension(250, 75));
+        this.add(textPane);
+
         sendMessageButton = new JButton("Send Message");
         sendMessageButton.setMaximumSize(new Dimension(100, 30));
         sendMessageButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -63,6 +72,7 @@ public class MainWindow extends JFrame {
         sendMessageButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                UdpExampleMain.message = textArea.getText();
                 UdpExampleMain.sendMessage = true;
             }
         });
