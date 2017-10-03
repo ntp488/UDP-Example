@@ -3,9 +3,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.net.DatagramSocket;
 
-/**
- * Created by Nathan on 10/3/2017.
- */
 public class MainWindow extends JFrame {
     JButton startThreadsButton, stopThreadsButton, sendMessageButton;
     JTextArea textArea;

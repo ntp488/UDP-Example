@@ -1,8 +1,5 @@
 import java.net.DatagramSocket;
 
-/**
- * Created by Nathan on 10/3/2017.
- */
 public class UdpExampleMain {
     public static MainWindow mainWindow;
     public static DatagramSocket socket;
