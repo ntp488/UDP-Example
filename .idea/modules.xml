@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/UDPartifact.iml" filepath="$PROJECT_DIR$/.idea/modules/UDPartifact.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/UDPartifact_main.iml" filepath="$PROJECT_DIR$/.idea/modules/UDPartifact_main.iml" group="UDPartifact" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/UDPartifact_test.iml" filepath="$PROJECT_DIR$/.idea/modules/UDPartifact_test.iml" group="UDPartifact" />
+    </modules>
+  </component>
+</project>
