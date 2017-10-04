@@ -6,7 +6,6 @@ public class UDPSender implements Runnable {
     @Override
     public void run() {
         //use localhost to experiment on a standalone computer, change to correct ip address in order to communicate
-        String hostname="localhost", message = "This is the default message!";
         try {
             // Create a datagram socket, look for the first available port
             System.out.println ("Using local port: " + UdpExampleMain.socket.getLocalPort());
@@ -14,8 +13,8 @@ public class UDPSender implements Runnable {
             PrintStream pOut;
             DatagramPacket packet;
             byte [] bArray;
-            System.out.println("Looking for hostname " + hostname);
-            InetAddress remoteAddress = InetAddress.getByName(hostname);
+            System.out.println("Looking for hostname " + UdpExampleMain.hostName);
+            InetAddress remoteAddress = InetAddress.getByName(UdpExampleMain.hostName);
             //check its IP number
             System.out.println("Hostname has IP address = " +
                     remoteAddress.getHostAddress());
@@ -23,10 +22,9 @@ public class UDPSender implements Runnable {
             while (UdpExampleMain.stopThreads == false) {
                 //TODO: change so that message can be changed and update sending packet
                 if (UdpExampleMain.sendMessage == true) {
-                    message = UdpExampleMain.message;
                     bOut = new ByteArrayOutputStream();
                     pOut = new PrintStream(bOut, true);
-                    pOut.println(message);
+                    pOut.println(UdpExampleMain.message);
                     bArray = bOut.toByteArray();
                     packet = new DatagramPacket( bArray, bArray.length );
                     packet.setAddress(remoteAddress);
@@ -39,7 +37,7 @@ public class UDPSender implements Runnable {
             System.out.println("Stopping sender.");
         }
         catch (UnknownHostException ue){
-            System.out.println("Unknown host "+hostname);
+            System.out.println("Unknown host " + UdpExampleMain.hostName);
         }
         catch (IOException e)	{
             System.out.println ("Error - " + e);
