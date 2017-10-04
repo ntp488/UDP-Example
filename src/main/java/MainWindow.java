@@ -6,6 +6,8 @@ import java.net.DatagramSocket;
 public class MainWindow extends JFrame {
     JButton startThreadsButton, stopThreadsButton, sendMessageButton;
     JTextArea textArea;
+    JScrollPane messageList;
+    JPanel messageListPanel;
     JTextField ipInputField;
     JLabel hostnameLabel, messageLabel;
     Thread receiverThread, senderThread;
@@ -92,7 +94,7 @@ public class MainWindow extends JFrame {
         textArea.setAlignmentX(Component.CENTER_ALIGNMENT);
         textArea.setLineWrap(true);
         JScrollPane textPane = new JScrollPane(textArea);
-        textPane.setMinimumSize(new Dimension(250, 75));
+        textPane.setPreferredSize(new Dimension(250, 75));
         this.add(textPane);
 
         this.add(Box.createRigidArea(new Dimension(0, 15)));
@@ -104,13 +106,29 @@ public class MainWindow extends JFrame {
         sendMessageButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UdpExampleMain.message = textArea.getText();
+                UdpExampleMain.outputMessage = textArea.getText();
                 UdpExampleMain.sendMessage = true;
                 textArea.setText("");
             }
         });
         this.add(sendMessageButton);
 
+        this.add(Box.createRigidArea(new Dimension(0, 15)));
+
+        messageList = new JScrollPane();
+        messageList.setPreferredSize(new Dimension(250, 75));
+        this.add(messageList);
+
         this.add(Box.createVerticalGlue());
+
+        messageListPanel = new JPanel();
+        BoxLayout messageListLayout = new BoxLayout(messageListPanel, BoxLayout.Y_AXIS);
+        messageListPanel.setLayout(messageListLayout);
+
+    }
+
+    public void AddMessageToList(JLabel newLabel) {
+        messageListPanel.add(newLabel);
+        messageList.setViewportView(messageListPanel);
     }
 }

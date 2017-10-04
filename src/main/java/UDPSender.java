@@ -20,11 +20,10 @@ public class UDPSender implements Runnable {
                     remoteAddress.getHostAddress());
 
             while (UdpExampleMain.stopThreads == false) {
-                //TODO: change so that message can be changed and update sending packet
                 if (UdpExampleMain.sendMessage == true) {
                     bOut = new ByteArrayOutputStream();
                     pOut = new PrintStream(bOut, true);
-                    pOut.println(UdpExampleMain.message);
+                    pOut.println(UdpExampleMain.outputMessage);
                     bArray = bOut.toByteArray();
                     packet = new DatagramPacket( bArray, bArray.length );
                     packet.setAddress(remoteAddress);

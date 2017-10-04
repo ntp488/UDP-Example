@@ -20,13 +20,16 @@ public class UDPReceiver implements Runnable{
                 bin = new ByteArrayInputStream(packet.getData());
 
                 // Display only up to the length of the original UDP packet
+                String messageAssembler = "";
                 for (int i=0; i < packet.getLength(); i++)  {
                     int data = bin.read();
                     if (data == -1)
                         break;
                     else
                         System.out.print ( (char) data) ;
+                        messageAssembler += (char)data;
                 }
+                UdpExampleMain.PostReceivedMessage(messageAssembler);
             }
         }
         catch (IOException e) 	{
