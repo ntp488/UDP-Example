@@ -6,7 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42b38514-c3e0-46f7-9784-b7904ce3aa6e" name="Default" comment="Fixed jarring process.">
+    <list default="true" id="42b38514-c3e0-46f7-9784-b7904ce3aa6e" name="Default" comment="Attempting out push">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/UDPartifact.iml" afterPath="$PROJECT_DIR$/.idea/modules/UDPartifact.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -103,8 +103,8 @@
       <file leaf-file-name="UDPSender.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/UDPSender.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="220">
+              <caret line="11" column="25" lean-forward="false" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -492,6 +492,12 @@
             <path>
               <item name="UDPartifact" type="b2602c69:ProjectViewProjectNode" />
               <item name="UDP-Example" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UDPartifact" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UDP-Example" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -507,6 +513,23 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="UDPartifact" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UDP-Example" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="StableArtifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UDPartifact" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UDP-Example" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="StableArtifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="UDPExecutable" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UDPartifact" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UDP-Example" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="StableArtifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="UDPjar" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -517,12 +540,18 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.build.tools" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/out" />
     <property name="external.system.task.project.file.to.start" value="$PROJECT_DIR$/settings.gradle" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Nathan\Documents\GitHub\UDP-Example\StableArtifacts\UDPjar" />
+      <recent name="C:\Users\Nathan\Documents\GitHub\UDP-Example\StableArtifacts" />
+    </key>
   </component>
   <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
     <UpdatedFiles>
@@ -919,7 +948,14 @@
       <option name="project" value="LOCAL" />
       <updated>1507097988574</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Attempting out push">
+      <created>1507148877974</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1507148877974</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -994,7 +1030,8 @@
     <MESSAGE value="Allows user to input message. Modified socket closing." />
     <MESSAGE value="Better GUI. Host name is now changeable." />
     <MESSAGE value="Fixed jarring process." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed jarring process." />
+    <MESSAGE value="Attempting out push" />
+    <option name="LAST_COMMIT_MESSAGE" value="Attempting out push" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1486,8 +1523,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/UDPSender.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="220">
+          <caret line="11" column="25" lean-forward="false" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1574,11 +1611,12 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>UDPartifact_main|UDPartifact</last-edited>
+          <last-edited>UDPartifact</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
