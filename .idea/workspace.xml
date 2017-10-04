@@ -7,9 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42b38514-c3e0-46f7-9784-b7904ce3aa6e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StableArtifacts/UDPExecutable/UDPexample.exe" afterPath="$PROJECT_DIR$/StableArtifacts/UDPExecutable/UDPexample.exe" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/UDPartifact.iml" afterPath="$PROJECT_DIR$/.idea/modules/UDPartifact.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/UDPartifact_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/UDPartifact_test.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -838,7 +835,14 @@
       <option name="project" value="LOCAL" />
       <updated>1507149698519</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="New stable exe">
+      <created>1507151229847</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1507151229847</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView">
@@ -895,7 +899,8 @@
     <MESSAGE value="Fixed jarring process." />
     <MESSAGE value="Attempting out push" />
     <MESSAGE value="Creates stable artifacts directory and stores executable alongside jar." />
-    <option name="LAST_COMMIT_MESSAGE" value="Creates stable artifacts directory and stores executable alongside jar." />
+    <MESSAGE value="New stable exe" />
+    <option name="LAST_COMMIT_MESSAGE" value="New stable exe" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
