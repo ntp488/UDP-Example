@@ -1,7 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.net.DatagramSocket;
+import java.io.IOException;
+import java.net.MulticastSocket;
 
 public class MainWindow extends JFrame {
     JButton startThreadsButton, stopThreadsButton, sendMessageButton;
@@ -49,7 +50,7 @@ public class MainWindow extends JFrame {
                     UdpExampleMain.stopThreads = false;
                 }
                 try {
-                    UdpExampleMain.socket = new DatagramSocket(2000);
+                    UdpExampleMain.socket = new MulticastSocket(2000);
                     UdpExampleMain.hostName = ipInputField.getText();
                     receiverThread = new Thread(new UDPReceiver());
                     senderThread = new Thread(new UDPSender());
@@ -59,7 +60,7 @@ public class MainWindow extends JFrame {
                     stopThreadsButton.setEnabled(true);
                     startThreadsButton.setEnabled(false);
                 }
-                catch (java.net.SocketException e1) {
+                catch (IOException e1) {
                     e1.printStackTrace();
                 }
             }
