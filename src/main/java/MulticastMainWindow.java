@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.MulticastSocket;
 
@@ -15,7 +13,7 @@ public class MulticastMainWindow extends JFrame {
 
     public MulticastMainWindow() {
         initComponents();
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setTitle("UDP-Example");
         this.setVisible(true);
     }
@@ -38,7 +36,7 @@ public class MulticastMainWindow extends JFrame {
 
         messageLabel.setText("Message");
         chatGroupIpLabel.setText("Chat Group IP");
-        ipInputField.setText(UdpExampleMain.hostName);;
+        ipInputField.setText(UdpExampleMain.hostName);
         portLabel.setText("Port");
         portInputField.setText(Integer.toString(UdpExampleMain.portNumber));
         joinChatButton.setText("Join Chat");
@@ -61,56 +59,42 @@ public class MulticastMainWindow extends JFrame {
     }
 
     private void AddActionListeners() {
-        joinChatButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (UdpExampleMain.stopThreads != false) {
-                    UdpExampleMain.stopThreads = false;
-                }
-                try {
-                    UdpExampleMain.socket = new MulticastSocket(Integer.parseInt(portInputField.getText()));
-                    UdpExampleMain.hostName = ipInputField.getText();
-                    UdpExampleMain.chatHandle = chatHandleInputField.getText();
-                    receiverThread = new Thread(new UDPReceiver());
-                    senderThread = new Thread(new UDPSender());
-                    receiverThread.start();
-                    senderThread.start();
-                    sendMessageButton.setEnabled(true);
-                    leaveChatButton.setEnabled(true);
-                    joinChatButton.setEnabled(false);
-                }
-                catch (IOException e1) {
-                    e1.printStackTrace();
-                }
+        joinChatButton.addActionListener(e -> {
+            if (UdpExampleMain.stopThreads) {
+                UdpExampleMain.stopThreads = false;
+            }
+            try {
+                UdpExampleMain.socket = new MulticastSocket(Integer.parseInt(portInputField.getText()));
+                UdpExampleMain.hostName = ipInputField.getText();
+                UdpExampleMain.chatHandle = chatHandleInputField.getText();
+                receiverThread = new Thread(new UDPReceiver());
+                senderThread = new Thread(new UDPSender());
+                receiverThread.start();
+                senderThread.start();
+                sendMessageButton.setEnabled(true);
+                leaveChatButton.setEnabled(true);
+                joinChatButton.setEnabled(false);
+            }
+            catch (IOException e1) {
+                e1.printStackTrace();
             }
         });
 
-        leaveChatButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                UdpExampleMain.stopThreads = true;
-                sendMessageButton.setEnabled(false);
-                UdpExampleMain.socket.close();
-                leaveChatButton.setEnabled(false);
-                joinChatButton.setEnabled(true);
-            }
+        leaveChatButton.addActionListener(e -> {
+            UdpExampleMain.stopThreads = true;
+            sendMessageButton.setEnabled(false);
+            UdpExampleMain.socket.close();
+            leaveChatButton.setEnabled(false);
+            joinChatButton.setEnabled(true);
         });
 
-        sendMessageButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                UdpExampleMain.outputMessage = UdpExampleMain.chatHandle + ":" + messageInputField.getText();
-                UdpExampleMain.sendMessage = true;
-                messageInputField.setText("");
-            }
+        sendMessageButton.addActionListener(e -> {
+            UdpExampleMain.outputMessage = UdpExampleMain.chatHandle + ":" + messageInputField.getText();
+            UdpExampleMain.sendMessage = true;
+            messageInputField.setText("");
         });
 
-        exitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+        exitButton.addActionListener(e -> System.exit(0));
     }
 
     private void CreateLayout() {
