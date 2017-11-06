@@ -13,6 +13,7 @@ public class MainWindow extends JFrame {
     JLabel hostnameLabel, messageLabel;
     Thread receiverThread, senderThread;
     BoxLayout layout;
+
     public MainWindow() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setMinimumSize(new Dimension(300, 400));

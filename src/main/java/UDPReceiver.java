@@ -29,7 +29,7 @@ public class UDPReceiver implements Runnable{
                         System.out.print ( (char) data) ;
                         messageAssembler += (char)data;
                 }
-                UdpExampleMain.PostReceivedMessage(messageAssembler);
+                UdpExampleMain.PostMessage(messageAssembler);
             }
         }
         catch (IOException e) 	{

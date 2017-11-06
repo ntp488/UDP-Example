@@ -27,10 +27,11 @@ public class UDPSender implements Runnable {
                     bArray = bOut.toByteArray();
                     packet = new DatagramPacket( bArray, bArray.length );
                     packet.setAddress(remoteAddress);
-                    packet.setPort(2000);
+                    packet.setPort(UdpExampleMain.portNumber);
                     UdpExampleMain.socket.send(packet);
                     System.out.println ("Packet sent at!" + new Date());
                     UdpExampleMain.sendMessage = false;
+                    //UdpExampleMain.PostMessage(UdpExampleMain.outputMessage);
                 }
             }
             System.out.println("Stopping sender.");

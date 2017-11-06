@@ -36,17 +36,15 @@ public class MulticastMainWindow extends JFrame {
         messageArea = new JTextArea();
 
         messageLabel.setText("Message");
-        messageInputField.setText("messageInputField");
         chatGroupIpLabel.setText("Chat Group IP");
         ipInputField.setText(UdpExampleMain.hostName);;
         portLabel.setText("Port");
-        portInputField.setText("portInputField");
+        portInputField.setText(Integer.toString(UdpExampleMain.portNumber));
         joinChatButton.setText("Join Chat");
         sendMessageButton.setText("Send Message");
         leaveChatButton.setText("Leave Chat");
         exitButton.setText("Exit");
         chatHandleLabel.setText("Chat Handle Name");
-        chatHandleInputField.setText("chatHandleInputField");
 
         leaveChatButton.setEnabled(false);
         sendMessageButton.setEnabled(false);
@@ -56,7 +54,6 @@ public class MulticastMainWindow extends JFrame {
         messageArea.setRows(5);
         messageArea.setWrapStyleWord(true);
         messageAreaScrollPane.setViewportView(messageArea);
-        messageArea.setText("messageArea");
 
         AddActionListeners();
         CreateLayout();
@@ -70,15 +67,16 @@ public class MulticastMainWindow extends JFrame {
                     UdpExampleMain.stopThreads = false;
                 }
                 try {
-                    UdpExampleMain.socket = new MulticastSocket(2000);
+                    UdpExampleMain.socket = new MulticastSocket(Integer.parseInt(portInputField.getText()));
                     UdpExampleMain.hostName = ipInputField.getText();
+                    UdpExampleMain.chatHandle = chatHandleInputField.getText();
                     receiverThread = new Thread(new UDPReceiver());
                     senderThread = new Thread(new UDPSender());
                     receiverThread.start();
                     senderThread.start();
                     sendMessageButton.setEnabled(true);
                     leaveChatButton.setEnabled(true);
-                    leaveChatButton.setEnabled(false);
+                    joinChatButton.setEnabled(false);
                 }
                 catch (IOException e1) {
                     e1.printStackTrace();
@@ -93,16 +91,23 @@ public class MulticastMainWindow extends JFrame {
                 sendMessageButton.setEnabled(false);
                 UdpExampleMain.socket.close();
                 leaveChatButton.setEnabled(false);
-                leaveChatButton.setEnabled(true);
+                joinChatButton.setEnabled(true);
             }
         });
 
         sendMessageButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UdpExampleMain.outputMessage = messageInputField.getText();
+                UdpExampleMain.outputMessage = UdpExampleMain.chatHandle + ":" + messageInputField.getText();
                 UdpExampleMain.sendMessage = true;
                 messageInputField.setText("");
+            }
+        });
+
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
             }
         });
     }
@@ -113,24 +118,25 @@ public class MulticastMainWindow extends JFrame {
         layout.setHorizontalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addComponent(ipInputField, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
-                                .addGap(113, 113, 113)
+                                .addComponent(ipInputField, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+                                .addGap(140, 140, 140)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addComponent(joinChatButton)
-                                                .addGap(29, 29, 29)
+                                                .addGap(40, 40, 40)
                                                 .addComponent(sendMessageButton))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addComponent(leaveChatButton)
-                                                .addGap(18, 18, 18)
+                                                .addGap(40, 40, 40)
                                                 .addComponent(exitButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGap(0, 0, Short.MAX_VALUE))
                         .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(chatHandleLabel)
-                                .addGap(26, 26, 26)
-                                .addComponent(chatHandleInputField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37))
+                                .addGap(10, 10, 10)
+                                .addComponent(chatHandleInputField)
+                                .addGap(10, 10, 10)
+                        )
                         .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(chatGroupIpLabel, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -140,7 +146,7 @@ public class MulticastMainWindow extends JFrame {
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(messageInputField, GroupLayout.PREFERRED_SIZE, 316, GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
-                                                .addGap(45, 45, 45)
+                                                .addGap(20, 20, 20)
                                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                         .addComponent(portInputField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(portLabel))))
@@ -183,8 +189,8 @@ public class MulticastMainWindow extends JFrame {
         pack();
     }
 
-    public void AddMessageToList(JLabel newLabel) {
-        messageArea.append(newLabel.getText());
+    public void AddMessageToList(String newMessage) {
+        messageArea.append(newMessage);
         messageAreaScrollPane.setViewportView(messageArea);
     }
 
