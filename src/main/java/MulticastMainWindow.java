@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -113,79 +114,118 @@ public class MulticastMainWindow extends JFrame {
     }
 
     private void CreateLayout() {
-        GroupLayout layout = new GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(ipInputField, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-                                .addGap(140, 140, 140)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(joinChatButton)
-                                                .addGap(40, 40, 40)
-                                                .addComponent(sendMessageButton))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(leaveChatButton)
-                                                .addGap(40, 40, 40)
-                                                .addComponent(exitButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(chatHandleLabel)
-                                .addGap(10, 10, 10)
-                                .addComponent(chatHandleInputField)
-                                .addGap(10, 10, 10)
-                        )
-                        .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(chatGroupIpLabel, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(messageLabel, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(messageInputField, GroupLayout.PREFERRED_SIZE, 316, GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(20, 20, 20)
-                                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                                        .addComponent(portInputField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(portLabel))))
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(messageAreaScrollPane)
-                                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(chatHandleLabel)
-                                        .addComponent(chatHandleInputField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                .addGap(11, 11, 11)
-                                .addComponent(messageAreaScrollPane, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(messageLabel, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(messageInputField, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(chatGroupIpLabel, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(portLabel)
-                                        .addComponent(joinChatButton)
-                                        .addComponent(sendMessageButton))
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                                .addComponent(leaveChatButton)
-                                                .addComponent(exitButton))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                                        .addComponent(portInputField)
-                                                        .addComponent(ipInputField))
-                                                .addContainerGap())))
-        );
+        this.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
 
+        gbc.insets = new Insets(10, 0, 0, 0);
+        gbc.weightx = .3;
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        gbc.weighty = .2;
+        gbc.gridwidth = 1;
+        this.add(chatHandleLabel, gbc);
+
+        gbc.weightx = .3;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(10, 0, 0, 10);
+        gbc.gridx = 3;
+        gbc.gridy = 0;
+        gbc.weighty = .2;
+        gbc.gridwidth = 1;
+        this.add(chatHandleInputField, gbc);
+
+
+        gbc.insets = new Insets(5, 10, 5, 10);
+        gbc.weightx = .3;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weighty = .2;
+        gbc.gridwidth = 4;
+        this.add(messageAreaScrollPane, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        gbc.insets = new Insets(0, 10, 0, 0);
+        gbc.gridwidth = 1;
+        this.add(messageLabel, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
+        gbc.gridwidth = 3;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(0, 0, 0, 10);
+        this.add(messageInputField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.weighty = .2;
+        gbc.weightx = .3;
+        gbc.gridwidth = 1;
+        gbc.insets = new Insets(0, 10, 0, 0);
+        this.add(chatGroupIpLabel, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
+        gbc.gridwidth = 1;
+        gbc.insets = new Insets(0, 0, 0, 0);
+        this.add(portLabel, gbc);
+
+        gbc.gridx = 2;
+        gbc.gridy = 3;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
+        gbc.gridwidth = 1;
+        gbc.insets = new Insets(5, 10, 5, 5);
+        this.add(joinChatButton, gbc);
+
+        gbc.gridx = 3;
+        gbc.gridy = 3;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
+        gbc.gridwidth = 1;
+        gbc.insets = new Insets(5, 5, 5, 10);
+        this.add(sendMessageButton, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
+        gbc.gridwidth = 1;
+        gbc.insets = new Insets(-25, 10, 0, 0);
+        this.add(ipInputField, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 4;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
+        gbc.gridwidth = 1;
+        gbc.insets = new Insets(-25, 10, 0, 0);
+        this.add(portInputField, gbc);
+
+        gbc.gridx = 2;
+        gbc.gridy = 4;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
+        gbc.gridwidth = 1;
+        gbc.insets = new Insets(5, 10, 5, 5);
+        this.add(leaveChatButton, gbc);
+
+        gbc.gridx = 3;
+        gbc.gridy = 4;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
+        gbc.gridwidth = 1;
+        gbc.insets = new Insets(5, 5, 5, 10);
+        this.add(exitButton, gbc);
+
+        this.setMinimumSize(new Dimension(500, 0));
         pack();
     }
 
