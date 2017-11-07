@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.MulticastSocket;
 
 public class MulticastMainWindow extends JFrame {
@@ -71,6 +72,7 @@ public class MulticastMainWindow extends JFrame {
                 senderThread = new Thread(new UDPSender());
                 receiverThread.start();
                 senderThread.start();
+                UdpExampleMain.socket.joinGroup(InetAddress.getByName(UdpExampleMain.hostName));
                 sendMessageButton.setEnabled(true);
                 leaveChatButton.setEnabled(true);
                 joinChatButton.setEnabled(false);

@@ -13,24 +13,18 @@ public class UDPReceiver implements Runnable{
             while (UdpExampleMain.stopThreads == false) {
                 // Receive a packet - remember by default this is a blocking operation
                 UdpExampleMain.socket.receive(packet);
-                System.out.println ("Packet received at " + new Date( ));
+                //System.out.println ("Packet received at " + new Date( ));
                 InetAddress remoteAddress = packet.getAddress();
-                System.out.println ("Sender: " + remoteAddress.getHostAddress( ) );
-                System.out.println ("from Port: " + packet.getPort());
+                //System.out.println ("Sender: " + remoteAddress.getHostAddress( ) );
+                //System.out.println ("from Port: " + packet.getPort());
                 bin = new ByteArrayInputStream(packet.getData());
 
                 // Display only up to the length of the original UDP packet
-                String messageAssembler = "";
-                for (int i=0; i < packet.getLength(); i++)  {
-                    int data = bin.read();
-                    if (data == -1)
-                        break;
-                    else
-                        System.out.print ( (char) data) ;
-                        messageAssembler += (char)data;
-                }
+                String messageAssembler = new String(packet.getData(), 0, packet.getLength());
                 UdpExampleMain.PostMessage(messageAssembler);
             }
+            UdpExampleMain.socket.leaveGroup(InetAddress.getByName(UdpExampleMain.hostName));
+            UdpExampleMain.socket.close();
         }
         catch (IOException e) 	{
             System.out.println ("Error - Receiver -" + e);
