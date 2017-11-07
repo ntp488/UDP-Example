@@ -1,8 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
 
 public class MulticastMainWindow extends JFrame {
     private JButton joinChatButton, sendMessageButton, leaveChatButton, exitButton;
@@ -10,7 +7,7 @@ public class MulticastMainWindow extends JFrame {
     private JScrollPane messageAreaScrollPane;
     private JTextArea messageArea;
     private JTextField messageInputField, ipInputField, portInputField, chatHandleInputField;
-    private Thread receiverThread, senderThread;
+    private Thread receiverThread;
 
     public MulticastMainWindow() {
         initComponents();
@@ -93,84 +90,120 @@ public class MulticastMainWindow extends JFrame {
         this.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
-        gbc.gridx = 2; gbc.gridy = 0; gbc.weightx = .3; gbc.weighty = .2;
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
         gbc.insets = new Insets(10, 0, 0, 0);
         gbc.fill = GridBagConstraints.NONE;
         gbc.gridwidth = 1;
         this.add(chatHandleLabel, gbc);
 
 
-
-        gbc.gridx = 3; gbc.gridy = 0; gbc.weightx = .3; gbc.weighty = .2;
+        gbc.gridx = 3;
+        gbc.gridy = 0;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
         gbc.insets = new Insets(10, 0, 0, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = 1;
         this.add(chatHandleInputField, gbc);
 
 
-
-
-        gbc.gridx = 0; gbc.gridy = 1; gbc.weightx = .3; gbc.weighty = .2;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
         gbc.insets = new Insets(5, 10, 5, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = 4;
         this.add(messageAreaScrollPane, gbc);
 
-        gbc.gridx = 0; gbc.gridy = 2; gbc.weightx = .3; gbc.weighty = .2;
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
         gbc.insets = new Insets(0, 10, 0, 0);
         gbc.fill = GridBagConstraints.NONE;
         gbc.gridwidth = 1;
         this.add(messageLabel, gbc);
 
-        gbc.gridx = 1; gbc.gridy = 2; gbc.weightx = .3; gbc.weighty = .2;
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
         gbc.insets = new Insets(0, 0, 0, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = 3;
         this.add(messageInputField, gbc);
 
-        gbc.gridx = 0; gbc.gridy = 3; gbc.weightx = .3; gbc.weighty = .2;
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
         gbc.insets = new Insets(0, 10, 0, 0);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = 1;
         this.add(chatGroupIpLabel, gbc);
 
-        gbc.gridx = 1; gbc.gridy = 3; gbc.weightx = .3; gbc.weighty = .2;
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
         gbc.insets = new Insets(0, 0, 0, 0);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = 1;
         this.add(portLabel, gbc);
 
-        gbc.gridx = 2; gbc.gridy = 3; gbc.weightx = .3; gbc.weighty = .2;
+        gbc.gridx = 2;
+        gbc.gridy = 3;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
         gbc.insets = new Insets(5, 10, 5, 5);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = 1;
         this.add(joinChatButton, gbc);
 
-        gbc.gridx = 3;gbc.gridy = 3;gbc.weightx = .3;gbc.weighty = .2;
+        gbc.gridx = 3;
+        gbc.gridy = 3;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
         gbc.insets = new Insets(5, 5, 5, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = 1;
         this.add(sendMessageButton, gbc);
 
-        gbc.gridx = 0;gbc.gridy = 4;gbc.weightx = .3;gbc.weighty = .2;
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
         gbc.insets = new Insets(-25, 10, 0, 0);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = 1;
         this.add(ipInputField, gbc);
 
-        gbc.gridx = 1;gbc.gridy = 4;gbc.weightx = .3;gbc.weighty = .2;
+        gbc.gridx = 1;
+        gbc.gridy = 4;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
         gbc.insets = new Insets(-25, 10, 0, 0);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = 1;
         this.add(portInputField, gbc);
 
-        gbc.gridx = 2;gbc.gridy = 4;gbc.weightx = .3;gbc.weighty = .2;
+        gbc.gridx = 2;
+        gbc.gridy = 4;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
         gbc.insets = new Insets(5, 10, 5, 5);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = 1;
         this.add(leaveChatButton, gbc);
 
-        gbc.gridx = 3;gbc.gridy = 4;gbc.weightx = .3;gbc.weighty = .2;
+        gbc.gridx = 3;
+        gbc.gridy = 4;
+        gbc.weightx = .3;
+        gbc.weighty = .2;
         gbc.insets = new Insets(5, 5, 5, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = 1;

@@ -4,23 +4,23 @@ import java.io.*;
 public class UDPSender {
     public static void SendMessage() {
         try {
-            DatagramSocket dSocket;
+            DatagramSocket socket;
             DatagramPacket packet;
-            byte [] bArray;
+            byte[] bArray;
             System.out.println("Looking for hostname " + UdpExampleMain.hostName);
             InetAddress remoteAddress = InetAddress.getByName(UdpExampleMain.hostName);
 
-            dSocket = new DatagramSocket();
+            socket = new DatagramSocket();
 
             bArray = UdpExampleMain.outputMessage.getBytes();
             packet = new DatagramPacket(
-                bArray,
-                bArray.length,
-                remoteAddress,
-                UdpExampleMain.portNumber
+                    bArray,
+                    bArray.length,
+                    remoteAddress,
+                    UdpExampleMain.portNumber
             );
-            dSocket.send(packet);
-            dSocket.close();
+            socket.send(packet);
+            socket.close();
         } catch (UnknownHostException e) {
             e.printStackTrace();
         } catch (SocketException e) {
