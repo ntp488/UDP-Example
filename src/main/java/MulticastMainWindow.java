@@ -64,35 +64,25 @@ public class MulticastMainWindow extends JFrame {
             if (UdpExampleMain.stopThreads) {
                 UdpExampleMain.stopThreads = false;
             }
-            try {
-                UdpExampleMain.socket = new MulticastSocket(Integer.parseInt(portInputField.getText()));
-                UdpExampleMain.hostName = ipInputField.getText();
-                UdpExampleMain.chatHandle = chatHandleInputField.getText();
-                receiverThread = new Thread(new UDPReceiver());
-                senderThread = new Thread(new UDPSender());
-                receiverThread.start();
-                senderThread.start();
-                UdpExampleMain.socket.joinGroup(InetAddress.getByName(UdpExampleMain.hostName));
-                sendMessageButton.setEnabled(true);
-                leaveChatButton.setEnabled(true);
-                joinChatButton.setEnabled(false);
-            }
-            catch (IOException e1) {
-                e1.printStackTrace();
-            }
+            UdpExampleMain.hostName = ipInputField.getText();
+            UdpExampleMain.chatHandle = chatHandleInputField.getText();
+            receiverThread = new Thread(new UDPReceiver());
+            receiverThread.start();
+            sendMessageButton.setEnabled(true);
+            leaveChatButton.setEnabled(true);
+            joinChatButton.setEnabled(false);
         });
 
         leaveChatButton.addActionListener(e -> {
             UdpExampleMain.stopThreads = true;
             sendMessageButton.setEnabled(false);
-            UdpExampleMain.socket.close();
             leaveChatButton.setEnabled(false);
             joinChatButton.setEnabled(true);
         });
 
         sendMessageButton.addActionListener(e -> {
             UdpExampleMain.outputMessage = UdpExampleMain.chatHandle + ":" + messageInputField.getText();
-            UdpExampleMain.sendMessage = true;
+            UDPSender.SendMessage();
             messageInputField.setText("");
         });
 

@@ -1,33 +1,28 @@
 import java.io.*;
 import java.net.*;
-import java.util.*;
 
 public class UDPReceiver implements Runnable{
+    protected MulticastSocket socket = null;
+    protected byte[] buffer = new byte[256];
+
     @Override
-    public void run() {
+    public void run(){
         try {
-            System.out.println ("Bound to local port " + UdpExampleMain.socket.getLocalPort());
-            DatagramPacket packet = new DatagramPacket( new byte[256], 256 );
-            ByteArrayInputStream bin;
+            socket = new MulticastSocket(UdpExampleMain.portNumber);
+            InetAddress group = InetAddress.getByName(UdpExampleMain.hostName);
+            socket.joinGroup(group);
 
             while (UdpExampleMain.stopThreads == false) {
-                // Receive a packet - remember by default this is a blocking operation
-                UdpExampleMain.socket.receive(packet);
-                //System.out.println ("Packet received at " + new Date( ));
-                InetAddress remoteAddress = packet.getAddress();
-                //System.out.println ("Sender: " + remoteAddress.getHostAddress( ) );
-                //System.out.println ("from Port: " + packet.getPort());
-                bin = new ByteArrayInputStream(packet.getData());
-
-                // Display only up to the length of the original UDP packet
+                DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
+                socket.receive(packet);
                 String messageAssembler = new String(packet.getData(), 0, packet.getLength());
                 UdpExampleMain.PostMessage(messageAssembler);
             }
-            UdpExampleMain.socket.leaveGroup(InetAddress.getByName(UdpExampleMain.hostName));
-            UdpExampleMain.socket.close();
+            socket.leaveGroup(group);
+            socket.close();
         }
-        catch (IOException e) 	{
-            System.out.println ("Error - Receiver -" + e);
+        catch(java.io.IOException e){
+            e.printStackTrace();
         }
     }
 }

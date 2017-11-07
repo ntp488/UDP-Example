@@ -1,8 +1,5 @@
-import java.net.MulticastSocket;
-
 public class UdpExampleMain {
     public static MulticastMainWindow mainWindow;
-    public static MulticastSocket socket;
     public static int portNumber = 4001;
     public volatile static String outputMessage = "This is the default message!", hostName = "224.0.0.1",
         chatHandle = "";
