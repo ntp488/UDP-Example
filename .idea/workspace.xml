@@ -7,9 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42b38514-c3e0-46f7-9784-b7904ce3aa6e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StableArtifacts/UDPjar/UDPartifact_main.jar" afterPath="$PROJECT_DIR$/StableArtifacts/UDPjar/UDPartifact_main.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/UDPReceiver.java" afterPath="$PROJECT_DIR$/src/main/java/UDPReceiver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/UDPSender.java" afterPath="$PROJECT_DIR$/src/main/java/UDPSender.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -89,17 +88,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UDPReceiver.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UDPReceiver.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/UDPReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="17" column="42" lean-forward="false" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="42" />
+            <state relative-caret-position="400">
+              <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UDPSender.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UDPSender.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/UDPSender.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="260">
@@ -864,7 +863,14 @@
       <option name="project" value="LOCAL" />
       <updated>1509961654999</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Working on single comp">
+      <created>1510023539295</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1510023539295</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView">
@@ -926,7 +932,8 @@
     <MESSAGE value="Better GUI" />
     <MESSAGE value="Even Better GUI" />
     <MESSAGE value="Fixed Warnings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Warnings" />
+    <MESSAGE value="Working on single comp" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on single comp" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1294,14 +1301,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/MainWindow.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/UDPReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="42" lean-forward="false" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/UdpExampleMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1330,6 +1329,14 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/UDPReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
