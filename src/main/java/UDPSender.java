@@ -11,13 +11,13 @@ public class UDPSender {
             InetAddress remoteAddress = InetAddress.getByName(UdpExampleMain.hostName);
 
             socket = new DatagramSocket();
-
-            bArray = UdpExampleMain.outputMessage.getBytes();
+            String temp = UdpExampleMain.outputMessage + "\n";
+            bArray = temp.getBytes();
             packet = new DatagramPacket(
-                    bArray,
-                    bArray.length,
-                    remoteAddress,
-                    UdpExampleMain.portNumber
+                bArray,
+                bArray.length,
+                remoteAddress,
+                UdpExampleMain.portNumber
             );
             socket.send(packet);
             socket.close();
